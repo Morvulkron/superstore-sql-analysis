@@ -1,0 +1,41 @@
+-- Total Sales and Profit by Region
+SELECT Region, SUM(Sales) AS Total_Sales, SUM(Profit) AS Total_Profit
+FROM superstore
+GROUP BY Region
+ORDER BY Total_Sales DESC;
+
+-- Monthly Sales Trend
+SELECT strftime('%Y-%m', Order_Date) AS Month, SUM(Sales) AS Sales
+FROM superstore
+GROUP BY Month
+ORDER BY Month;
+
+-- Top 5 Products by Profit
+SELECT Product_Name, SUM(Profit) AS Profit
+FROM superstore
+GROUP BY Product_Name
+ORDER BY Profit DESC
+LIMIT 5;
+
+CREATE TABLE superstore (
+    Row_ID INTEGER PRIMARY KEY,
+    Order_ID TEXT,
+    Order_Date DATE,
+    Ship_Date DATE,
+    Ship_Mode TEXT,
+    Customer_ID TEXT,
+    Customer_Name TEXT,
+    Segment TEXT,
+    Country TEXT,
+    City TEXT,
+    State TEXT,
+    Region TEXT,
+    Product_ID TEXT,
+    Category TEXT,
+    Sub_Category TEXT,
+    Product_Name TEXT,
+    Sales REAL,
+    Quantity INTEGER,
+    Discount REAL,
+    Profit REAL
+);
